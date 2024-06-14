@@ -1,0 +1,87 @@
+{% extends 'headerfooter.html' %}
+
+{% block content %}
+<style>
+    .form-container {
+        width: 500px;
+        margin: 15% auto;
+        padding: 20px;
+        /* border: 1px solid #ccc; */
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .forgot-password-link {
+        text-align: right;
+        margin-bottom: 10px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .login-button {
+        width: 100%;
+        padding: 10px 20px;
+        background-color: #06d817;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .create-account-link {
+        color: #333;
+        margin-left: 5px;
+        text-decoration: none;
+    }
+</style>
+
+<div class="form-container">
+    <h2>Login</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            {{ form.password.label_tag }}
+            {{ form.password }}
+        </div>
+        <a href="{% url 'password_reset' %}" class="forgot-password-link">Forgot password</a>
+        <div class="form-group">
+            <input type="submit" value="Login" class="login-button">
+        </div>
+        <span>Don't have an account?</span>
+        <a href="{% url 'signup' %}" class="create-account-link">Sign up</a>
+       
+
+
+    </form>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
